@@ -230,6 +230,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#literal-tagged-html</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#literal-template-string</string>
 				</dict>
 				<dict>
@@ -2244,79 +2248,6 @@
 				</dict>
 			</array>
 		</dict>
-		<key>literal-template-string</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>([a-zA-Z$_][\w$_]*)?(`)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.template-string.tag.name.js</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.template-string.begin.js</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>`</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.template-string.end.js</string>
-						</dict>
-					</dict>
-					<key>name</key>
-					<string>string.template-string.js</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#string-content</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>\${</string>
-							<key>beginCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.template-string.element.begin.js</string>
-								</dict>
-							</dict>
-							<key>end</key>
-							<string>}</string>
-							<key>endCaptures</key>
-							<dict>
-								<key>0</key>
-								<dict>
-									<key>name</key>
-									<string>punctuation.template-string.element.end.js</string>
-								</dict>
-							</dict>
-							<key>name</key>
-							<string>entity.template-string.element.js</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>include</key>
-									<string>#expression</string>
-								</dict>
-							</array>
-						</dict>
-					</array>
-				</dict>
-			</array>
-		</dict>
 		<key>literal-regexp</key>
 		<dict>
 			<key>patterns</key>
@@ -2516,6 +2447,121 @@
 								<dict>
 									<key>include</key>
 									<string>$self</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-tagged-html</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(html)(`)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>meta.function-call.tagged-template.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.template.begin.js</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>text.html.basic.embedded.js</string>
+					<key>end</key>
+					<string>`</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.template.end.js</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>text.html.basic</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+		</dict>
+		<key>literal-template-string</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>([a-zA-Z$_][\w$_]*)?(`)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.template-string.tag.name.js</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.template-string.begin.js</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>`</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.template-string.end.js</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>string.template-string.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#string-content</string>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>\${</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.template-string.element.begin.js</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>}</string>
+							<key>endCaptures</key>
+							<dict>
+								<key>0</key>
+								<dict>
+									<key>name</key>
+									<string>punctuation.template-string.element.end.js</string>
+								</dict>
+							</dict>
+							<key>name</key>
+							<string>entity.template-string.element.js</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#expression</string>
 								</dict>
 							</array>
 						</dict>
