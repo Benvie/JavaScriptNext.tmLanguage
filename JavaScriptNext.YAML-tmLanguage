@@ -32,6 +32,7 @@ repository:
 
     - include: '#literal-regexp'              # before operators to avoid ambiguities
     - include: '#literal-number'
+    - include: '#literal-tagged-html'
     - include: '#literal-template-string'
     - include: '#literal-string'
     - include: '#literal-language-constant'
@@ -984,6 +985,19 @@ repository:
           '0': {name: punctuation.template-string.element.end.js}
         patterns:
         - include: '#expression'
+
+  literal-tagged-html:
+    patterns:
+    - contentName: text.html.basic.embedded.js
+      begin: '(html)(`)'
+      beginCaptures:
+        '1': {name: meta.function-call.tagged-template.js}
+        '2': {name: punctuation.definition.string.template.begin.js}
+      end: '`'
+      endCaptures:
+        '0': {name: punctuation.definition.string.template.end.js}
+      patterns:
+      - include: 'text.html.basic'
 
   literal-regexp:
     patterns:
